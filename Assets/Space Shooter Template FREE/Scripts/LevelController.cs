@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 #region Serializable classes
 [System.Serializable]
@@ -27,10 +28,23 @@ public class LevelController : MonoBehaviour {
     public float planetsSpeed;
     List<GameObject> planetsList = new List<GameObject>();
 
-    Camera mainCamera;   
+    Camera mainCamera;
+
+    public GameObject GameOver;
+    public GameObject YouWin;
+
+    public double score;
+
+    public TextMeshProUGUI scoreText; 
+    public TextMeshProUGUI jumpText;
+
+    public bool isGameActive = false;
+
+
 
     private void Start()
     {
+        Time.timeScale = 0;
         mainCamera = Camera.main;
         //for each element in 'enemyWaves' array creating coroutine which generates the wave
         for (int i = 0; i<enemyWaves.Length; i++) 
@@ -93,5 +107,26 @@ public class LevelController : MonoBehaviour {
 
             yield return new WaitForSeconds(timeBetweenPlanets);
         }
+    }
+
+    public void DisplayGameOver()
+    {
+        GameOver.SetActive(true);
+    }
+
+    public void IncreaseScore (double points)
+    {
+        score += points;
+    }
+
+   public void StartGame()
+    {
+        isGameActive = true;
+        Time.timeScale = 1;
+    }
+
+    public void RestartGame()
+    {
+
     }
 }
