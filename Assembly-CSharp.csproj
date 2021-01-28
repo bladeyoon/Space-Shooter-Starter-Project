@@ -67,6 +67,7 @@
     <Compile Include="Assets\PauseGame.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\Achievement.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\Bonus.cs" />
+    <Compile Include="Assets\Space Shooter Template FREE\Scripts\Boundary.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\DirectMoving.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\Enemy.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\FollowThePath.cs" />

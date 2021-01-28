@@ -11,12 +11,12 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     public GameObject destructionFX;
-
     public static Player instance;
 
     public int jump;
 
     public TextMeshProUGUI jumpText;
+    public LevelController levelController;
 
     private void Awake()
     {
@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     {
         Instantiate(destructionFX, transform.position, Quaternion.identity); //generating destruction visual effect and destroying the 'Player' object
         Destroy(gameObject);
+        
     }
 }
 

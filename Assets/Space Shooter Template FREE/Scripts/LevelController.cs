@@ -38,13 +38,13 @@ public class LevelController : MonoBehaviour {
     public TextMeshProUGUI scoreText; 
     public TextMeshProUGUI jumpText;
 
-    public bool isGameActive = false;
+    public bool isGameActive;
 
 
 
     private void Start()
     {
-        Time.timeScale = 0;
+        isGameActive = false;
         mainCamera = Camera.main;
         //for each element in 'enemyWaves' array creating coroutine which generates the wave
         for (int i = 0; i<enemyWaves.Length; i++) 
@@ -121,6 +121,7 @@ public class LevelController : MonoBehaviour {
 
    public void StartGame()
     {
+        score = 0;
         isGameActive = true;
         Time.timeScale = 1;
     }
