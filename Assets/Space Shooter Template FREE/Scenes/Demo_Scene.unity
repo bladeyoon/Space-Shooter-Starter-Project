@@ -187,6 +187,16 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114960433178452790, guid: 8e33fda0c220936498f5288af83d7450,
+        type: 3}
+      propertyPath: jump
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114960433178452790, guid: 8e33fda0c220936498f5288af83d7450,
+        type: 3}
+      propertyPath: jumpText
+      value: 
+      objectReference: {fileID: 1062541519}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e33fda0c220936498f5288af83d7450, type: 3}
 --- !u!1 &297583103
@@ -323,7 +333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &368473801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,7 +725,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &686333376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,6 +926,21 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114004447756405556, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
+        type: 3}
+      propertyPath: GameOver
+      value: 
+      objectReference: {fileID: 368473800}
+    - target: {fileID: 114004447756405556, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
+        type: 3}
+      propertyPath: gameOver
+      value: 
+      objectReference: {fileID: 368473800}
+    - target: {fileID: 114004447756405556, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
+        type: 3}
+      propertyPath: jumpText
+      value: 
+      objectReference: {fileID: 1062541519}
     - target: {fileID: 114004447756405556, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
         type: 3}
       propertyPath: scoreText
@@ -2349,7 +2374,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_textAlignment: 258
   m_characterSpacing: 0
   m_wordSpacing: 0

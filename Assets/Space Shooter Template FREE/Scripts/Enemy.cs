@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour {
     private void Start()
     {
         Invoke("ActivateShooting", Random.Range(shotTimeMin, shotTimeMax));
+        level = FindObjectOfType<LevelController>();
     }
 
     //coroutine making a shot
@@ -66,7 +67,7 @@ public class Enemy : MonoBehaviour {
     //method of destroying the 'Enemy'
     void Destruction()                           
     {
-        level.IncreaseScore(points);
+        level.IncreaseScore(50); // increase points by 50 if enemy was destroyed.
         Instantiate(destructionVFX, transform.position, Quaternion.identity); 
         Destroy(gameObject);
     }

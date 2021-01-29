@@ -30,7 +30,7 @@ public class LevelController : MonoBehaviour {
 
     Camera mainCamera;
 
-    public GameObject GameOver;
+    public GameObject gameOver;
     public GameObject YouWin;
 
     public double score;
@@ -109,9 +109,28 @@ public class LevelController : MonoBehaviour {
         }
     }
 
-    public void DisplayGameOver()
+
+
+    private void FixedUpdate()
     {
-        GameOver.SetActive(true);
+        if (scoreText.text != score.ToString())
+        {
+            scoreText.text = score.ToString();
+        }
+    }
+    public void startGameOver()
+    {
+        isGameActive = false;
+        StartCoroutine(DisplayGameOver());
+    }
+
+    public IEnumerator DisplayGameOver()
+    {
+        gameOver.SetActive(true);
+        scoreText.gameObject.transform.parent.gameObject.SetActive(false);
+        yield return new WaitForSeconds(5);
+        gameOver.SetActive(false);
+
     }
 
     public void IncreaseScore (double points)
