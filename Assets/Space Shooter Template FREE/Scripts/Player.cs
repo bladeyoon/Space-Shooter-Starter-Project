@@ -106,20 +106,7 @@ public class Player : MonoBehaviour
         {
             gameObject.transform.position = defaultSpawn;
         }
-
     }
-
-
-    /*
-private void FixedUpdate()
-{
-    if()
-}
-
-
-
-*/
-
 }
 
 

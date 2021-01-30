@@ -625,7 +625,7 @@
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\PoolingController.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\Projectile.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\RepeatingBackground.cs" />
-    <Compile Include="Assets\Space Shooter Template FREE\Scripts\Score.cs" />
+    <Compile Include="Assets\Space Shooter Template FREE\Scripts\ScoreBehavior.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\Scores.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\VisualEffect.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\Wave.cs" />

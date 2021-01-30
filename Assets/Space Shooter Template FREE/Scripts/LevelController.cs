@@ -40,7 +40,8 @@ public class LevelController : MonoBehaviour {
 
     public bool isGameActive;
 
-
+    public GameObject scoreBehavior;
+    public ScoreBehavior sb;
 
     private void Start()
     {
@@ -130,12 +131,22 @@ public class LevelController : MonoBehaviour {
         scoreText.gameObject.transform.parent.gameObject.SetActive(false);
         yield return new WaitForSeconds(5);
         gameOver.SetActive(false);
+        sb.CheckPlayerScore();
+    }
 
+    public void Save()
+    {
+        // To do list
     }
 
     public void IncreaseScore (double points)
     {
         score += points;
+    }
+
+    public double GetCurrentScore()
+    {
+        return score;
     }
 
    public void StartGame()
