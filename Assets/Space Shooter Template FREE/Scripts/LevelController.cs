@@ -43,9 +43,16 @@ public class LevelController : MonoBehaviour {
     public GameObject scoreBehavior;
     public ScoreBehavior sb;
 
-    private void Start()
+
+    private void Awake()
     {
         isGameActive = false;
+        Time.timeScale = 0;
+    }
+
+    private void Start()
+    {
+        sb = scoreBehavior.GetComponent<ScoreBehavior>();
         mainCamera = Camera.main;
         //for each element in 'enemyWaves' array creating coroutine which generates the wave
         for (int i = 0; i<enemyWaves.Length; i++) 
@@ -55,7 +62,19 @@ public class LevelController : MonoBehaviour {
         StartCoroutine(PowerupBonusCreation());
         StartCoroutine(PlanetsCreation());
     }
-    
+
+    public void StartGame()
+    {
+        score = 0;
+        isGameActive = true;
+        Time.timeScale = 1;
+    }
+
+    public void RestartGame()
+    {
+
+    }
+
     //Create a new wave after a delay
     IEnumerator CreateEnemyWave(float delay, GameObject Wave) 
     {
@@ -149,15 +168,5 @@ public class LevelController : MonoBehaviour {
         return score;
     }
 
-   public void StartGame()
-    {
-        score = 0;
-        isGameActive = true;
-        Time.timeScale = 1;
-    }
 
-    public void RestartGame()
-    {
-
-    }
 }

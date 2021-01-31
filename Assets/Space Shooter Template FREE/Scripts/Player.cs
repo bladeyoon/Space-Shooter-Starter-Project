@@ -11,6 +11,7 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     public GameObject destructionFX;            // VFX when player is dead.
+    public GameObject invincibleFX;             // VFX when player is invincible.
     public static Player instance;              // unique instance of the script for easy access to the script.
 
     public int jump;                            // player life.
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        invincibleFX.SetActive(false);
         defaultSpawn = new Vector3(0, -7, 0);
         if (instance == null) 
             instance = this;
@@ -58,7 +60,6 @@ public class Player : MonoBehaviour
                     rend.enabled = false;
                 }
                 isInvincible = true;
-
                 StartCoroutine(levelController.DisplayGameOver());
             }
 
@@ -81,13 +82,17 @@ public class Player : MonoBehaviour
     
     IEnumerator TimeOfInvincibility()
     {
+        //invincibleFX.SetActive(true); //Activate VFX when invincible.
         float time = 0f;
         while (time <= invincibilityTime)
         {
+            isInvincible = true;
             time += Time.deltaTime;
             yield return null;
         }
         isInvincible = false;
+        invincibleFX.SetActive(false);
+        Debug.Log("FX set to not active.");
     }
 
     void SpawnPlayer()
@@ -95,9 +100,9 @@ public class Player : MonoBehaviour
         if (jump > 0)
         {
             placePlayer(false);
-            
         }
         StartCoroutine(TimeOfInvincibility());
+        Debug.Log("Starting Coroutine of Invincible.");
     }
 
     void placePlayer(bool retry)
@@ -106,21 +111,22 @@ public class Player : MonoBehaviour
         {
             gameObject.transform.position = defaultSpawn;
         }
+        if (isTouching())
+        {
+            tryNewPlayerSpawnPosition();
+        }
+    }
+
+    void tryNewPlayerSpawnPosition()
+    {
+        int[] choices = new int[] { -1, 1 };
+        int pixelsToMove = 60 * (choices[UnityEngine.Random.Range(0, 2)]);
+        transform.position += new Vector3(transform.position.x + pixelsToMove, 0, 0);
+        placePlayer(true);
+    }
+
+    bool isTouching()
+    {
+        return gameObject.GetComponent<Collider2D>().IsTouchingLayers(LayerMask.GetMask("EnemyObject"));
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

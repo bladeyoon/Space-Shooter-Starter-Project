@@ -7,8 +7,8 @@ public class ScoreBehavior : MonoBehaviour
 {
     public LevelController levelController;
     public Scores.Score playerScoreObject;                              // reference to the Player UI
-    public GameObject newHighScoreUI;                                   // reference to New High Score UI
-    public GameObject highScoreUI;                                      // reference to High Score UI
+    public Canvas newHighScoreUI;                                   // reference to New High Score UI
+    public Canvas highScoreUI;                                      // reference to High Score UI
     public TMPro.TMP_InputField playerName;                             // reference to TMPro Text inputfield Component
     public TMPro.TMP_Text[] scoresTextList = new TMPro.TMP_Text[10];    // best 10 scores will shown
 
@@ -16,8 +16,8 @@ public class ScoreBehavior : MonoBehaviour
 
     public void Awake()
     {
-        newHighScoreUI.GetComponent<Canvas>().enabled = false;
-        highScoreUI.GetComponent<Canvas>().enabled = false;
+        //newHighScoreUI = GetComponent<Canvas>();
+        //highScoreUI = GetComponent<Canvas>();
     }
 
     static Scores.Score[] SortScores(Scores.Score[] scores)
@@ -78,8 +78,7 @@ public class ScoreBehavior : MonoBehaviour
 
     public void DisplayNewHighScore()
     {
-        newHighScoreUI.SetActive(true);
-        //newHighScoreUI.GetComponent<Canvas>().enabled = true;
+        newHighScoreUI.GetComponent<Canvas>().enabled = true;
         playerName.enabled = true;
     }
 
@@ -91,21 +90,23 @@ public class ScoreBehavior : MonoBehaviour
         {
             addNewScore(playerScoreObject);
         }
+        newHighScoreUI.GetComponent<Canvas>().enabled = false;
         StartCoroutine(DisplayHighScore());
     }
 
     public IEnumerator DisplayHighScore()
     {
-        //highScoreUI.SetActive(true);
         UpdateHighScoreText();
         highScoreUI.GetComponent<Canvas>().enabled = true;
         Debug.Log("High Score UI is active now.");
         yield return new WaitForSeconds(10);
-        //highScoreUI.SetActive(false);
+
         highScoreUI.GetComponent<Canvas>().enabled = false;
         levelController.Save();
+
         Debug.Log("Stopping all coroutines");
         StopAllCoroutines();
+
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
@@ -114,10 +115,12 @@ public class ScoreBehavior : MonoBehaviour
     {
         Scores.Instance.scores = SortScores(Scores.Instance.scores);
         int rowIndex = 0;
-        for (int scoreIndex = scoresTextList.Length - 1; scoreIndex >= 0; scoreIndex --)
+        for (int scoreIndex = scoresTextList.Length-1; scoreIndex >= 0; scoreIndex--)
         {
-            scoresTextList[rowIndex].text = (rowIndex + 1) + "." + Scores.Instance.scores[scoreIndex].name +
+            scoresTextList[rowIndex].text = (rowIndex + 1) + 
+                "." + Scores.Instance.scores[scoreIndex].name +
                 " " + Scores.Instance.scores[scoreIndex].score;
+            rowIndex++;
         }
     }
 }
