@@ -611,12 +611,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PauseGame.cs" />
-    <Compile Include="Assets\Space Shooter Template FREE\Scripts\Achievement.cs" />
+    <Compile Include="Assets\Space Shooter Template FREE\Scripts\Achievements.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\Bonus.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\Boundary.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\DirectMoving.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\Enemy.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\FollowThePath.cs" />
+    <Compile Include="Assets\Space Shooter Template FREE\Scripts\GameData.cs" />
+    <Compile Include="Assets\Space Shooter Template FREE\Scripts\GoAroundScreen.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\HighScore.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\LevelController.cs" />
     <Compile Include="Assets\Space Shooter Template FREE\Scripts\Player.cs" />

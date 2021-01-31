@@ -11,7 +11,7 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     public GameObject destructionFX;            // VFX when player is dead.
-    public GameObject invincibleFX;             // VFX when player is invincible.
+    GameObject invincibleFX;                    // VFX when player is invincible.
     public static Player instance;              // unique instance of the script for easy access to the script.
 
     public int jump;                            // player life.
@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        invincibleFX.SetActive(false);
         defaultSpawn = new Vector3(0, -7, 0);
         if (instance == null) 
             instance = this;
@@ -33,9 +32,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        invincibleFX = GameObject.Find("InvincibleFX");
         levelController = FindObjectOfType<LevelController>();
         jumpText.text = jump.ToString();
         SpawnPlayer();
+        //invincibleFX.SetActive(false);
     }
 
     //method for damage proceccing by 'Player'
@@ -82,7 +83,6 @@ public class Player : MonoBehaviour
     
     IEnumerator TimeOfInvincibility()
     {
-        //invincibleFX.SetActive(true); //Activate VFX when invincible.
         float time = 0f;
         while (time <= invincibilityTime)
         {
@@ -92,7 +92,6 @@ public class Player : MonoBehaviour
         }
         isInvincible = false;
         invincibleFX.SetActive(false);
-        Debug.Log("FX set to not active.");
     }
 
     void SpawnPlayer()
@@ -101,6 +100,7 @@ public class Player : MonoBehaviour
         {
             placePlayer(false);
         }
+        invincibleFX.SetActive(true); //Activate VFX when invincible.
         StartCoroutine(TimeOfInvincibility());
         Debug.Log("Starting Coroutine of Invincible.");
     }

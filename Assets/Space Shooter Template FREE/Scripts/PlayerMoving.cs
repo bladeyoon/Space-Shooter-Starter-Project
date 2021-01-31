@@ -52,7 +52,6 @@ public class PlayerMoving : MonoBehaviour
 
         transform.position = new Vector2(newXpos, newYpos);
         //transform.position = new Vector3(newXpos, newYpos, 0);
-
         //transform.position += new Vector3(h, v, 0).normalized * speed * Time.deltaTime;
 
         if (controlIsActive)
